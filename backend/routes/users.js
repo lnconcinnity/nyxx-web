@@ -19,6 +19,9 @@ const users = new mockdb(new schema({
     lifetimeEnd: 'date',
 }));
 
+const generateRandomPassword = (length=8) => Array.from({ length }, () => String.fromCharCode(Math.floor(Math.random() * 62) + (Math.random() < 0.5 ? 65 : 97))).join('');
+const generateUniqueReferenceId = (password) => `${crypto.pbkdf2Sync(password,crypto.randomBytes(7).toString('hex'),1000,12,'sha512',(err) => err != null && console.error(err)).toString('hex')}`;
+
 const tryJWTSign = (secret) => expressJwt({
     secret: secret,
     algorithms: ['HS256'],
