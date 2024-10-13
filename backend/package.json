@@ -1,0 +1,14 @@
+{
+  "name": "nyxx-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "http": "0.0.1-security",
+    "morgan": "^1.10.0",
+    "express": "^4.17.1"
+  }
+}

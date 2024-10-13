@@ -35,14 +35,14 @@ const assertUserPermission = (permission) => (req, res, next) => {
     next();
 }
 
-router.get('/users', tryJWTSign(secret_keys.get_users_key), assertUserPermission(3), async (_, res) => {
+router.get('/', tryJWTSign(secret_keys.get_users_key), assertUserPermission(3), async (_, res) => {
     res.json(users.raw());
 })
 
-router.get('/users/get-user-info/:refid', async (req, res) => {
+router.get('/get-user-info/:refid', async (req, res) => {
     const user = users.find({ refid: req.params.refid });
     if (user.length === 0) return res.status(404).json({ code: -1, message: 'User not found.' });
-    res.json({ code: 0, message: `User "${req.params.refid}" is found.`, content: user[0].raw()});
+    res.status(200).json({ code: 0, message: `User "${req.params.refid}" is found.`, content: user[0].raw()});
 })
 
 module.exports = router;

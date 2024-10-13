@@ -2,6 +2,7 @@ const express = require('express'),
     cors = require('cors'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
+    http = require('http'),
     helmet = require('helmet');
 
 const app = express();
@@ -12,9 +13,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 
-app.use(require('./routes/users'))
+app.use('/api/users', require('./routes/users'));
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-    console.log(`Server is listening to port ${port}`);
+const port = 5000;
+const server = http.createServer(app);
+server.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });

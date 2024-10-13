@@ -2,7 +2,7 @@
 import React from "react"
 import { Container } from "react-bootstrap"
 
-const error = () => {
+const ErrorPage = () => {
     return (
         <Container>
             
@@ -10,4 +10,4 @@ const error = () => {
     )
 }
 
-export default error;
+export default ErrorPage;
