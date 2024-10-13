@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { ReactElement } from "react";
+import PermissionsContextProvider from "./providers/PermissionsContext";
+import { BrowserRouter, Route } from "react-router-dom";
+import error from "./pages/error";
+
+import './assets/styles/main.scss';
+
+const App = (): ReactElement => {
+
+    return (
+        <PermissionsContextProvider>
+            <BrowserRouter>
+                <Route path="/" errorElement={error()} />
+            </BrowserRouter>
+        </PermissionsContextProvider>
+    )
 }
 
 export default App;
