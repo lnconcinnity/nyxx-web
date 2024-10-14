@@ -1,0 +1,11 @@
+$--grey: rgb(128, 128, 128);
+
+div.page-loading {
+    div.spinner-border {
+        border-color: $--grey;
+        border-right-color: transparent;
+    }
+    p {
+        color: $--grey;
+    }
+}

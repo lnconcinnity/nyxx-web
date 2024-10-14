@@ -1,7 +1,7 @@
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 
-const useFetch = <T>(url: string, options?: RequestInit, interval: number=10000) => {
+const useFetch = <T>(url: string, options?: RequestInit, interval?: number) => {
     const [data, setData] = useState<T>(null as T);
     const [error, setError] = useState<any>(null);
     const [loading, setLoading] = useState<boolean>(true);
@@ -20,11 +20,14 @@ const useFetch = <T>(url: string, options?: RequestInit, interval: number=10000)
             }
         };
         tryFetch();
-        const intervalId = setInterval(tryFetch, interval);
-        return () => {
-            clearInterval(intervalId);
-            isMounted = false;
-        };
+        if (interval) {
+            const intervalId = setInterval(tryFetch, interval);
+            return () => {
+                clearInterval(intervalId);
+                isMounted = false;
+            };
+        }
+        return () => isMounted = false;
     }, []); 
     return [data, error, loading] as const;
 }
