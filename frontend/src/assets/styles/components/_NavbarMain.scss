@@ -1,9 +1,57 @@
 
-$navbar-padding-y: 0rem;
-$navbar-padding-x: 30%;
+$--primary-color: rgb(128, 128, 128);
+$--secondary-color: rgb(68, 68, 68);
+
+$navbar-padding-y: 0.3rem;
+$navbar-padding-x: 0rem;
+
+$nav-link-font-size: 1rem;
+$nav-link-padding-y: 2px;
 
 nav.navbar {
-    img.navbar-brand-image {
-        fill: red;
+    span.navbar-brand {
+        margin:  0 30px;
+    }
+    svg.navbar-brand-image path {
+        fill: #161616;
+    }
+
+    div.nav-item {
+        padding: 0 10px;
+    }
+
+    a.nav-link {
+        text-transform: capitalize;
+        border: 1px solid $--primary-color;
+        width: 125px;
+        text-align: center;
+        color: $--primary-color;
+        
+        transform: color 500ms ease-out,
+            border-color 500ms ease-out;
+        &:hover {
+            border-color: $--secondary-color;
+            color: $--secondary-color;
+        }
+    }
+    
+    a.socmed-link {
+        svg.socmed-link-image {
+            width: 22px;
+            height: 22px;
+            path {
+                fill: $--primary-color;
+                transition: fill 500ms ease-out;
+            }
+        }
+
+        &:hover {
+            svg.socmed-link-image.instagram path {
+                fill: rgb(198, 84, 186);
+            }
+            svg.socmed-link-image.facebook path {
+                fill: rgb(65, 71, 199);
+            }
+        }
     }
 }

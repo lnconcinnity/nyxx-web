@@ -1,0 +1,47 @@
+// FADE ANIMATION
+@mixin animateFade($time, $ease, $start: 0, $end: 1) {
+    @keyframes fade {
+        from { opacity: $end; }
+        to { opacity: $start; }
+    }
+    animation: fade #{$time} #{$ease};
+}
+  
+// FLY ANIMATION
+@mixin animateFly($time, $ease, $direction: 'vertical', $start: 0, $end: 1, $inverted: true) {
+    @keyframes fly {
+        from {
+            opacity: $end;
+            transform: translate(
+                if($direction == 'horizontal', 0, if($end == 0, if($inverted, -50px, 50px), 0)),
+                if($direction == 'vertical', 0, if($end == 0, if($inverted, -50px, 50px), 0))
+            );
+        }
+        to {
+            opacity: $start;
+            transform: translate(
+                if($direction == 'horizontal', if($start == 0, if($inverted, -50px, 50px), 0), 0),
+                if($direction == 'vertical', if($start == 0, if($inverted, -50px, 50px), 0), 0)
+            );
+        }
+    }
+    animation: fly #{$time} #{$ease};
+}  
+  
+@each $mode in ('in', 'out') {
+    @each $time in (250ms, 500ms, 750ms, 1s, 2s, 3s, 4s, 5s) {
+        .fade-#{$mode}-#{$time}-linear { @include animateFade($time, linear, if($mode == 'out', 1, 0), if($mode == 'out', 0, 0)); }
+        .fade-#{$mode}-#{$time}-easeIn { @include animateFade($time, ease-in, if($mode == 'out', 1, 0), if($mode == 'out', 0, 0)); }
+        .fade-#{$mode}-#{$time}-easeOut { @include animateFade($time, ease-out, if($mode == 'out', 1, 0), if($mode == 'out', 0, 0)); }
+        .fade-#{$mode}-#{$time}-easeInOut { @include animateFade($time, ease-in-out, if($mode == 'out', 1, 0), if($mode == 'out', 0, 0)); }
+  
+        @each $direction in ('horizontal', 'vertical') {
+            @each $type in ('inverted', 'normal') {
+                .fly-#{$direction}-#{$mode}-#{$time}-linear-#{$type} { @include animateFly($time, linear, $direction, if($mode == 'out', 1, 0), if($mode == 'out', 0, 1), if($type == 'inverted', false, true)); }
+                .fly-#{$direction}-#{$mode}-#{$time}-easeIn-#{$type} { @include animateFly($time, ease-in, $direction, if($mode == 'out', 1, 0), if($mode == 'out', 0, 1), if($type == 'inverted', false, true)); }
+                .fly-#{$direction}-#{$mode}-#{$time}-easeOut-#{$type} { @include animateFly($time, ease-out, $direction, if($mode == 'out', 1, 0), if($mode == 'out', 0, 1), if($type == 'inverted', false, true)); }
+                .fly-#{$direction}-#{$mode}-#{$time}-easeInOut-#{$type} { @include animateFly($time, ease-in-out, $direction, if($mode == 'out', 1, 0), if($mode == 'out', 0, 1), if($type == 'inverted', false, true)); }
+            }
+        }
+    }
+}  
