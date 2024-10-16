@@ -38,10 +38,13 @@ The following instructions are made by Copilot for ease of usage. Please pull an
 8. **Start the Application**
    - Navigate back to the main project folder.
    - Type `cmd` in the search bar to open a new Command Prompt.
-   - Once the prompt is shown.
+   - Once the prompt is shown, type:
+   ```
+   npm start
+   ```
+   - and press enter.
    - To exit the prompt properly, first do `CTRL+C` which would then prompt you to input y/n (simply a yes or no). Once the process is finished, freely exit the prompt.
    - If any issues rise when testing, try running the following in the command prompt that's been opened for the main folder:
    ```
    npm install npm install -g babel-loader @babel/preset-react @babel/preset-typescript svgr/webpack customize-cra concurrently react-app-rewired
    ```
-   
