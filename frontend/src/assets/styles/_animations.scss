@@ -18,7 +18,7 @@
                     opacity: $end;
                     transform: translate(
                         0,
-                        if($end == 0, -50px, 0)
+                        if($end == 0, 50px, 0)
                     );
                     }
                     to {
@@ -42,7 +42,7 @@
                 to {
                     opacity: $start;
                     transform: translate(
-                        if($start == 0, -50px, 0),
+                        if($start == 0, 50px, 0),
                         0
                     );
                 }
@@ -63,7 +63,7 @@
                     opacity: $start;
                     transform: translate(
                         0,
-                        if($start == 0, -50px, 0)
+                        if($start == 0, 50px, 0)
                     );
                 }
             }
@@ -73,7 +73,7 @@
                 from {
                     opacity: $end;
                     transform: translate(
-                        if($end == 0, -50px, 0),
+                        if($end == 0, 50px, 0),
                         0
                     );
                 }

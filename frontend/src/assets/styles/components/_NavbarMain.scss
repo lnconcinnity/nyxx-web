@@ -54,4 +54,11 @@ nav.navbar {
             }
         }
     }
+
+    &.bg-white {
+        box-shadow: 0px 5px 6px rgba(28, 28, 28, 0.087);
+    }
+
+    box-shadow: 0px 5px 6px rgba(28, 28, 28, 0);
+    transition: background-color 210ms linear, box-shadow 210ms linear;
 }

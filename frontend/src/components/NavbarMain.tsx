@@ -48,7 +48,7 @@ const NavbarMain = ({ links }: NavbarMainProps) => {
         </Nav>
     )
     return (
-        <Navbar className={`justify-content-center ${scroll[1] > 0 ? 'active' : 'inactive'}`} collapseOnSelect sticky="top">
+        <Navbar className={`justify-content-center ${scroll[1] > 0 ? 'bg-white' : ''}`} collapseOnSelect sticky="top">
             <div className="d-flex justify-content-center align-items-center w-100">
                 { getSiteNav() }
                 <Navbar.Brand className="mx-3">
