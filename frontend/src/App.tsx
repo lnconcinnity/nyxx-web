@@ -10,6 +10,7 @@ import PermissionsContextProvider from "./providers/PermissionsContext";
 import ErrorPage from "./pages/error";
 
 import './assets/styles/main.scss';
+import { ParallaxProvider } from "react-scroll-parallax";
 
 const viewportLimit = 'md'
 
@@ -42,10 +43,12 @@ const App = (): ReactElement => {
                             }
                         ]
                     } />
-                    <Routes>
-                        <Route path="/" element={<Landing />} errorElement={<ErrorPage />} />
-                        <Route path="/error" element={<ErrorPage />} />
-                    </Routes>
+                    <ParallaxProvider>
+                        <Routes>
+                            <Route path="/" element={<Landing />} errorElement={<ErrorPage />} />
+                            <Route path="/error" element={<ErrorPage />} />
+                        </Routes>
+                    </ParallaxProvider>
                 </BrowserRouter>
             </PermissionsContextProvider>
         </div>
