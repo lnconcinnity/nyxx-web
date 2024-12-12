@@ -20,7 +20,7 @@ const useFetch = <T>(url: string, options?: RequestInit, interval?: number) => {
             }
         };
         tryFetch();
-        if (interval) {
+        if (interval != null) {
             const intervalId = setInterval(tryFetch, interval);
             return () => {
                 clearInterval(intervalId);

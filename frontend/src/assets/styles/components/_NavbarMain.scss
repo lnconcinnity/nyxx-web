@@ -26,9 +26,11 @@ nav.navbar {
         width: 125px;
         text-align: center;
         color: $--primary-color;
-        
-        transform: color 500ms ease-out,
-            border-color 500ms ease-out;
+        font-size: 15px;
+            
+        transform: color var(--duration) var(--easing),
+            font-size var(--duration) var(--easing)
+            border-color var(--duration) var(--easing);
         &:hover {
             border-color: $--secondary-color;
             color: $--secondary-color;
@@ -41,7 +43,7 @@ nav.navbar {
             height: 22px;
             path {
                 fill: $--primary-color;
-                transition: fill 500ms ease-out;
+                transition: fill var(--duration) var(--easing);
             }
         }
 
@@ -58,6 +60,9 @@ nav.navbar {
     &.bg-white {
         box-shadow: 0px 5px 6px rgba(28, 28, 28, 0.087);
     }
+
+    --duration: 500ms;
+    --easing: ease-out;
 
     box-shadow: 0px 5px 6px rgba(28, 28, 28, 0);
     transition: background-color 210ms linear, box-shadow 210ms linear;

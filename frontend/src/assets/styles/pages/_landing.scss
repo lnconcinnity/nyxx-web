@@ -1,21 +1,140 @@
+$--dark: rgb(21, 21, 21);
+$--light: rgb(245, 245, 245);
+
+div.about-me-section {
+    position: relative;
+    z-index: 0;
+    background-color: $--dark;
+}
+
 h1.about-me {
     letter-spacing: 5px;
+    color: $--light;
 }
 
 p.about-me-text {
-    color: rgb(198, 198, 198);
-    margin-left: 30px;
+    color: rgb(175, 175, 175);
+    margin-left: 0px;
 }
 
-p a.contact-email {
-    color: rgb(169, 30, 30) !important;
-    &:hover {
-        color: rgb(221, 59, 59) !important;
+a.inquiry-link {
+    $--color: rgb(43, 83, 170);
+    $--hover-color: rgb(63, 105, 196);
+    $--duration: 200ms;
+    $--easing: ease-out;
+    &:hover span.hover-indicator {
+        margin-left: 5px;
+        color: $--hover-color;
     }
-    transition: color 210ms linear;
-    text-decoration: none;
+    &:hover span.context-text{
+        color: $--hover-color;
+    }
+    span.context-text, span.hover-indicator {
+        color: $--color;
+    }
+    span.hover-indicator {
+        margin-left: 0px;
+        transition: margin $--duration $--easing,
+        color $--duration $--easing;
+    }
+    span.context-text {
+        transition: color $--duration $--easing;
+    }
 }
 
-p.contact-mobile {
-    color: rgb(234, 234, 234) !important;
+p.portfolio-text-header {
+    font-size: 35px;
+}
+
+p.portfolio-text-body {
+    font-size: 10px;
+}
+
+p.portfolio-text-quote {
+    font-size: 12px;
+    sub {
+        font-size: 10px;
+    }
+}
+
+a.portfolio-link {
+    font-size: 8px;
+}
+
+@include media-breakpoint-up(lg) {
+    p.about-me-text {
+        margin-left: 30px;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    p.portfolio-text-header {
+        font-size: 50px;
+    }
+
+    p.portfolio-text-body {
+        font-size: 20px;
+    }
+    
+    p.portfolio-text-quote {
+        font-size: 22px;
+        sub {
+            font-size: 20px;
+        }
+    }
+    
+    a.portfolio-link {
+        font-size: 18px;
+    }
+}
+
+footer {
+    a.socmed-link {
+        $--primary-color: rgb(141, 141, 141);
+        $--instragram-color: rgb(198, 84, 186);
+        $--facebook-color: rgb(65, 71, 199);
+        $--linkedin-color: rgb(149, 248, 252);
+        $--duration: 250ms;
+        $--easing: ease-out;
+
+        margin-top: 2px;
+
+        color: $--primary-color;
+        transition: color $--duration $--easing;
+
+        span.context-text {
+            position: relative;
+            bottom: 3px;
+        }
+
+        svg.socmed-link-image {
+            width: 22px;
+            height: 22px;
+            path {
+                fill: $--primary-color;
+                transition: fill $--duration $--easing;
+            }
+        }
+
+        &:hover {
+            &.instagram {
+                color: $--instragram-color;
+                svg.socmed-link-image path {
+                    fill: $--instragram-color;
+                }
+            }
+            &.facebook {
+                color: $--facebook-color;
+                svg.socmed-link-image path {
+                    fill: $--facebook-color;
+                }
+            }
+            &.linkedin {
+                color: $--linkedin-color;
+                svg.socmed-link-image path {
+                    fill: $--linkedin-color;
+                }
+            }
+        }
+    }
 }

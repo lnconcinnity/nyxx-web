@@ -1,13 +1,15 @@
 {
     "name": "nyxx-web",
     "version": "1.0.0",
+    "private": true,
+    "workspaces": ["frontend", "backend"],
     "scripts": {
         "start": "concurrently \"npm run server\" \"npm run client\"",
         "server": "cd backend && node server.js",
         "client": "cd frontend && npm start"
     },
     "dependencies": {
-        "concurrently": "^7.0.0"
+        "concurrently": "^7.6.0"
     },
     "devDependencies": {
         "@svgr/webpack": "^8.1.0",

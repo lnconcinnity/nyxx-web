@@ -11,14 +11,14 @@ export interface ResponsiveLineBreakProps {
 
 const ResponsiveLineBreak: React.FC<ResponsiveLineBreakProps> = ({ sm, md, lg, xl }) => {
     const classes = [
-      sm || md || lg || xl ? `d-none` : `d-${DISPLAY}`,
-      sm ? `d-sm-${DISPLAY}` : "",
-      md ? `d-md-${DISPLAY}` : "",
-      lg ? `d-lg-${DISPLAY}` : "",
-      xl ? `d-xl-${DISPLAY}` : "",
+        sm || md || lg || xl ? `d-none` : `d-${DISPLAY}`,
+        sm ? `d-sm-${DISPLAY}` : "",
+        md ? `d-md-${DISPLAY}` : "",
+        lg ? `d-lg-${DISPLAY}` : "",
+        xl ? `d-xl-${DISPLAY}` : "",
     ].join(" ").trim();
   
     return <br className={classes} />
-  };
+};
   
-  export default ResponsiveLineBreak;
+export default ResponsiveLineBreak;

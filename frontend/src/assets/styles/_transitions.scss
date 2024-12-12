@@ -1,0 +1,80 @@
+
+.background-slide {
+    $easing: ease-in-out;
+    $duration: 300ms;
+    $color-light: rgb(240, 240, 240);
+    $color-dark: rgb(21, 21, 21);
+
+    @mixin slide-background($color) {
+        background-color: $color;
+    }
+      
+    @mixin text-color($color) {
+        color: $color;
+        transition: color $duration $easing;
+    }
+
+    position: relative;
+    transition: color $duration $easing;
+    z-index: 1;
+    
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        z-index: 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform $duration $easing;
+
+        @include slide-background(#000);
+    }
+  
+    &:hover::before {
+        transform: scaleX(1);
+    }
+
+    span {
+        position: relative;
+        z-index: 2;
+        color: #fff;
+    }
+
+    &:hover {
+        &.slide-text-light span {
+            @include text-color($color-dark);
+        }
+        &.slide-text-dark span {
+            @include text-color($color-light);
+        }
+    }
+  
+    &.slide-text-light {
+        span {
+            @include text-color($color-light);
+        }
+        background-color: $color-dark;
+        &::before {
+            @include slide-background($color-light);
+        }
+    }
+  
+    &.slide-text-dark {
+        span {
+            @include text-color($color-dark);
+        }
+        background-color: $color-light;
+        &::before {
+            @include slide-background($color-dark);
+        }
+    }
+  
+    &.bordered-slide {
+        padding: 5px 10px;
+        border: 1px solid $color-light;
+    }
+  }
+  
